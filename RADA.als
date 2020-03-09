@@ -100,7 +100,7 @@ sig UI {
 	eFilhoDeSubSerie : set ClasseSubSerie,
 	referenciado : set AutoDeEliminacao,
 	produzidaPorEnt : set Entidade,
-	produzidaPorTipEnt : set TipologiaDeEntidade	
+	produzidaPorTipEnt : set TipologiaDeEntidade
 }
 
 sig Entidade {
@@ -149,7 +149,7 @@ sig AutoDeEliminacao{
 	eliminaDocProduzidaPor : set Entidade,
 	eDaResponsabilidadeDe : set Entidade,
 	aprovadoPor : set Entidade,
-	legitimadoPor : set Entidade,
+	legitimadoPor : set Legislacao,
 	eliminaDocAvaliadaPor : set RADA,
 	referenciaUI : set UI
 }
@@ -195,4 +195,5 @@ fact {
     aprovaLeg = ~aprovadaPor
     alteraLeg = ~alteradaPor
     revogaLeg = ~revogadaPor
+    legitimaAE = ~legitimadoPor
 }

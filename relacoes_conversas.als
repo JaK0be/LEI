@@ -38,6 +38,7 @@ fact {
     aprovaLeg = ~aprovadaPor
     alteraLeg = ~alteradaPor
     revogaLeg = ~revogadaPor
+    legitimaAE = ~legitimadoPor
 
     --sig ClasseSerie extends Classe {
     --    temPCA : set PCA,
@@ -58,13 +59,11 @@ fact {
     --sig Legislacao {
     --    criaEntidadePorDiplomaNumero : set Entidade,
     --    extingueEntidadePorDiplomaNumero : set Entidade,
-    --    legitimaAE : set AutoDeEliminacao
     --}
 
     --sig AutoDeEliminacao{
     --    referencia : set ClasseSerie + ClasseSubSerie, --Provavelmente esta errado
     --    aprovadoPor : set Entidade,
-    --    legitimadoPor : set Entidade,
     --}
 }
 
