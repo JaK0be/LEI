@@ -1,11 +1,11 @@
 sig RADA  {
 	contemRE : one RelatorioExpositivoRada, -- Ver se é set ou não
 	contemTS : one TSRada, -- Ver se é set ou não
-	aprovadoPorLeg : set Legislacao,
-	revogadoPorLeg : set Legislacao,
+	aprovadoPorLeg : one Legislacao,
+	revogadoPorLeg : one Legislacao,
 	aprovadoPorEnt : set Entidade,
 	revogadoPorEnt : set Entidade,
-	eDaResponsabilidadeDe : set Entidade,
+	eDaResponsabilidadeDe : one Entidade, --Entidade que armazena informação
 	avaliaDocEliminadaPor : set AutoEliminacao	
 }
 
@@ -32,7 +32,7 @@ abstract sig DF{
 sig Eliminacao, Conservacao, CP extends DF{}
 
 abstract sig Justificacao {
-	temCriterio: some Criterio
+	temCriterio: some Criterio -- Tem no máximo 3 criterios
 }
 sig JustificacaoDF, JustificacaoPCA extends Justificacao {}
 
@@ -69,13 +69,13 @@ sig ClasseSerie extends Classe {
 	eFilhaDeN2 : one ClasseN2,
 	eFilhaDeN3 : one ClasseN3,
 	ePaiDeSubSerie : set ClasseSubSerie,
-	produzidaPorEnt : set Entidade,
-	produzidaPorTipEnt : set TipologiaDeEntidade,
+	produzidaPorEnt : one Entidade, -- COnjunto definido em cima
+	produzidaPorTipEnt : one TipologiaDeEntidade,  -- COnjunto definido em cima
 	reguladaPor : set Legislacao,
-	temPCA : set PCA,
+	temPCA : one PCA,
 	temSerieRelacionadaSuplementoDe : set ClasseSerie,
 	temSerieRelacionadaSuplementoPara : set ClasseSerie,
-	temDF : set DF,
+	temDF : one DF,
 	eComplementar : set ClasseSerie,
 	eSintetizadaPor : set ClasseSerie,
 	eSinteseDe : set ClasseSerie,
@@ -88,8 +88,8 @@ sig ClasseSerie extends Classe {
 
 sig ClasseSubSerie extends Classe {
 	eFilhoDeSerie : one ClasseSerie,
-	temPCA : set PCA,
-	temDF : set DF,
+	temPCA : one PCA,
+	temDF : one DF,
 	eSintetizadaPor : set ClasseSerie,
 	eSinteseDe : set ClasseSerie,
 	ePaiDeUI : set UI,
@@ -109,8 +109,8 @@ sig Entidade {
 	integraCompetenciaDe : set Entidade,
 	temCompetenciasIntegradasEm : set Entidade,
 	estaIntegradaEm : set TipologiaDeEntidade, --talvez some
-	eCriadaPorDiplomaNumero : set Legislacao,
-	eExtintaPorDiplomaNumero : set Legislacao,
+	eCriadaPorDiplomaNumero : one Legislacao,
+	eExtintaPorDiplomaNumero : one Legislacao,
 	aprovaLeg : set Legislacao,
 	revogaLeg : set Legislacao,
 	aprovaRADA : set RADA,
