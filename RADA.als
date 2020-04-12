@@ -6,7 +6,7 @@ sig RADA  {
 	aprovadoPorEnt : set Entidade,
 	revogadoPorEnt : set Entidade,
 	eDaResponsabilidadeDe : one Entidade, --Entidade que armazena informação
-	avaliaDocEliminadaPor : set AutoEliminacao	
+	avaliaDocEliminadaPor : set AutoDeEliminacao	
 }
 
 sig RelatorioExpositivoRada {
@@ -39,7 +39,7 @@ sig JustificacaoDF, JustificacaoPCA extends Justificacao {}
 abstract sig Criterio{
 	temLegislacao : set Legislacao
 }
-sig CriterioLegal, CriterioUtilidadeAdministrativa, CriterioGestionario, CriterioDensidadeInformal, CriterioComplementaridadeInfo extends Criterio{
+sig CriterioLegal, CriterioUtilidadeAdministrativa, CriterioGestionario, CriterioDensidadeInformacional, CriterioComplementaridadeInfo extends Criterio{
 	temSerieRelacionada : set ClasseSerie
 }
 /*--------------------*/
@@ -49,7 +49,7 @@ abstract sig Classe {
 }
 
 sig ClasseN1 extends Classe {
-	ePaiDeN2 : set ClassN2,
+	ePaiDeN2 : set ClasseN2,
 	ePaiDeSerie : set ClasseSerie
 }
 
@@ -72,10 +72,10 @@ sig ClasseSerie extends Classe {
 	produzidaPorEnt : one Entidade, -- COnjunto definido em cima
 	produzidaPorTipEnt : one TipologiaDeEntidade,  -- COnjunto definido em cima
 	reguladaPor : set Legislacao,
-	temPCA : one PCA,
+	temPCA : lone PCA, -- Alterei para lone, para invariantes sobre df e pca fazerem sentido
 	temSerieRelacionadaSuplementoDe : set ClasseSerie,
 	temSerieRelacionadaSuplementoPara : set ClasseSerie,
-	temDF : one DF,
+	temDF : lone DF, -- Alterei para lone, para invariantes sobre df e pca fazerem sentido
 	eComplementar : set ClasseSerie,
 	eSintetizadaPor : set ClasseSerie,
 	eSinteseDe : set ClasseSerie,
