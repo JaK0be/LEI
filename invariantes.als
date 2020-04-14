@@ -69,7 +69,7 @@ pred inv6 {
         (all cfsubserie:c.ePaiDeSubSerie | ts = cfsubserie.pertenceA)
 }
 
--- Se uma Classe pertence não a uma TSRada, consequentemente os seus descendentes tambem não pertencem
+-- Se uma Classe não pertence a uma TSRada, consequentemente os seus descendentes tambem não pertencem
 pred inv7 {
 	all c:ClasseN1 | no c.pertenceA =>
 		(all cf:c.ePaiDeN2 | no cf.pertenceA) and
@@ -115,7 +115,7 @@ pred inv12 {
 	all disj d1,d2:DF | d1.temJustificacaoDF != d2.temJustificacaoDF
 }
 
-/* 2 DFs nao podem ter a mesma instancia de Justificacao */
+/* 2 PCAs nao podem ter a mesma instancia de Justificacao */
 pred inv13 {
 	all disj pca1,pca2:PCA | pca1.temJustificacaoPCA != pca2.temJustificacaoPCA
 }
