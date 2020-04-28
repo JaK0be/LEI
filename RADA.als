@@ -24,12 +24,12 @@ sig TSRada {
 
 /* Relações Compostas */
 sig PCA {
-	temJustificacaoPCA : one Justificacao,
+	temJustificacaoPCA : one JustificacaoPCA,
 	valor: one Int
 }
 
 abstract sig DF{
-	temJustificacaoDF : one Justificacao
+	temJustificacaoDF : one JustificacaoDF
 }
 sig Eliminacao, Conservacao, CP extends DF{}
 
@@ -309,14 +309,6 @@ pred inv9 {
 	all c:ClasseSerie | no c.ePaiDeSubSerie => one c.temDF and one c.temPCA
 }
 
--- As subseries herdam as legislações existentes nas series, quer para o PCA quer para o DF
-pred inv10 {
-	all c:ClasseSerie | some c.ePaiDeSubSerie => {
-	(c.ePaiDeSubSerie.temPCA.temJustificacaoPCA.temCriterio.temLegislacao 
-	 + c.ePaiDeSubSerie.temDF.temJustificacaoDF.temCriterio.temLegislacao) in c.reguladaPor
-	}
-}
-
 /* As relações eComplementar e eCruzado são simétricas. */
 pred inv11 {
 	Symmetric[eComplementar]
@@ -481,6 +473,20 @@ pred inv27 {
 	)
 }
 
+pred inv10 {
+	all j:JustificacaoDF | j in DF.temJustificacaoDF
+	all j:JustificacaoPCA | j in PCA.temJustificacaoPCA
+	all df:DF | df in (ClasseSerie.temDF + ClasseSubSerie.temDF)
+	all pca:PCA | pca in (ClasseSerie.temPCA + ClasseSubSerie.temPCA)
+	all c:Criterio | c  in Justificacao.temCriterio
+}
+
+// Entidade não sucede a si própria
+pred inv28{
+	all e:Entidade | e not in e.sucede
+}
+
+//Podem duas entidades revogar a mesma legislação?
 run {
 	 inv1
 	 inv2
@@ -509,4 +515,5 @@ run {
 	 inv25
 	 inv26
 	 inv27
+	 //inv28
 }
