@@ -38,11 +38,17 @@ abstract sig Justificacao {
 }
 sig JustificacaoDF, JustificacaoPCA extends Justificacao {}
 
-abstract sig Criterio{
-	temLegislacao : set Legislacao
+abstract sig Criterio{}
+
+sig CriterioGestionario extends Criterio{
 }
-sig CriterioLegal, CriterioUtilidadeAdministrativa, CriterioGestionario, CriterioDensidadeInformacional, CriterioComplementaridadeInfo extends Criterio{
+
+sig CriterioUtilidadeAdministrativa, CriterioComplementaridadeInfo, CriterioDensidadeInformacional extends Criterio{
 	temSerieRelacionada : set ClasseSerie
+}
+
+sig CriterioLegal extends Criterio{
+	temLegislacao : set Legislacao
 }
 /*--------------------*/
 
@@ -52,7 +58,7 @@ abstract sig Classe {
 
 sig ClasseN1 extends Classe {
 	ePaiDeN2 : set ClasseN2,
-	ePaiDeSerie : set ClasseSerie
+	ePaiDeSerie : set ClasseSerie -- Perguntar se pode ser pai de serie
 }
 
 sig ClasseN2 extends Classe {
@@ -67,20 +73,20 @@ sig ClasseN3 extends Classe {
 }
 
 sig ClasseSerie extends Classe {
-	eFilhaDeN1 : one ClasseN1,
-	eFilhaDeN2 : one ClasseN2,
-	eFilhaDeN3 : one ClasseN3,
+	eFilhaDeN1 : lone ClasseN1,
+	eFilhaDeN2 : lone ClasseN2,
+	eFilhaDeN3 : lone ClasseN3,
 	ePaiDeSubSerie : set ClasseSubSerie,
 	produzidaPorEnt : one Entidade, -- COnjunto definido em cima
 	produzidaPorTipEnt : one TipologiaDeEntidade,  -- COnjunto definido em cima
 	reguladaPor : set Legislacao,
 	temPCA : lone PCA, -- Alterei para lone, para invariantes sobre df e pca fazerem sentido
-	temSerieRelacionadaSuplementoDe : set ClasseSerie,
-	temSerieRelacionadaSuplementoPara : set ClasseSerie,
+	eSuplementoDe : set ClasseSerie,
+	eSuplementoPara : set ClasseSerie,
 	temDF : lone DF, -- Alterei para lone, para invariantes sobre df e pca fazerem sentido
 	eComplementar : set ClasseSerie,
-	eSintetizadaPor : set ClasseSerie,
-	eSinteseDe : set ClasseSerie,
+	eSintetizadaPorSerie : set ClasseSerie,
+	eSinteseDeSerie : set ClasseSerie,
 	temSucessor : set ClasseSerie,
 	temAntecessor : set ClasseSerie,
 	eCruzado : set ClasseSerie,
@@ -92,8 +98,8 @@ sig ClasseSubSerie extends Classe {
 	eFilhoDeSerie : one ClasseSerie,
 	temPCA : one PCA,
 	temDF : one DF,
-	eSintetizadaPor : set ClasseSerie,
-	eSinteseDe : set ClasseSerie,
+	eSintetizadaPorSubSerie : set ClasseSubSerie,
+	eSinteseDeSubSerie : set ClasseSubSerie,
 	ePaiDeUI : set UI,
 }
 
@@ -101,7 +107,7 @@ sig UI {
 	eFilhoDeSerie : set ClasseSerie,
 	eFilhoDeSubSerie : set ClasseSubSerie,
 	referenciado : set AutoDeEliminacao,
-	produzidaPorEnt : set Entidade,
+	produzidaPorEnt : set Entidade, -- lone?
 	produzidaPorTipEnt : set TipologiaDeEntidade
 }
 
@@ -127,7 +133,7 @@ sig Entidade {
 
 sig TipologiaDeEntidade {
 	integra : set Entidade,
-	prodDocAvaliadaPor : RelatorioExpositivoRada,
+	prodDocAvaliadaPor : set RelatorioExpositivoRada,
 	produzSerie : set ClasseSerie,
 	produzUI : set UI
 }
@@ -151,7 +157,7 @@ sig AutoDeEliminacao{
 	eliminaDocProduzidaPor : set Entidade,
 	eDaResponsabilidadeDe : set Entidade,
 	aprovadoPor : set Entidade,
-	legitimadoPor : set Legislacao,
+	legitimadoPor : one Legislacao, -- Verificar  se está correto
 	eliminaDocAvaliadaPor : set RADA,
 	referenciaUI : set UI
 }
@@ -180,12 +186,12 @@ fact {
     UI <: produzidaPorEnt = ~(Entidade <: produzUI)
     UI <: produzidaPorTipEnt = ~(TipologiaDeEntidade <: produzUI)
     reguladaPor = ~regulaSerie
-    temSerieRelacionadaSuplementoDe = ~temSerieRelacionadaSuplementoPara
+    eSuplementoDe = ~eSuplementoPara
     eComplementar = ~eComplementar -- relação simétrica
-    eSintetizadaPor = ~eSinteseDe
+    eSintetizadaPorSerie = ~eSinteseDeSerie
+	eSintetizadaPorSubSerie  = ~eSinteseDeSubSerie
     temSucessor = ~temAntecessor
     ClasseSerie <: ePaiDeUI = ~eFilhoDeSerie
-    eSintetizadaPor = ~eSinteseDe
     ClasseSubSerie <: ePaiDeUI = ~eFilhoDeSubSerie
     referenciado = ~referenciaUI
     antecede = ~sucede
@@ -207,31 +213,35 @@ pred inv1 {
 }
 
 /* A suplementoPara B -> critério de utilidade administrativa em A a referir B
+	1. A.temPCA.temJustificacaoPCA.temCriterio CriterioUtilidadeAdministrativa;
+	2. CriterioUtilidadeAdministrativa c.temSerieRelacionada B;
+	3. -> B suplementoDe A;
  */
 pred inv2 {
 	all A, B : ClasseSerie | (
-        B in A.temSerieRelacionadaSuplementoPara implies (
+        B in A.eSuplementoPara implies (
             some c : CriterioUtilidadeAdministrativa |
-                (A in c.temSerieRelacionada and c in B.temPCA.temJustificacaoPCA.temCriterio)
+                (B in c.temSerieRelacionada and c in A.temPCA.temJustificacaoPCA.temCriterio)
         )
     )
 }
+
 
 /* classe não pode ter em simultâneo relações de sinteseDe e eSintetizadoPor
  */
 pred inv3 {
-    all A : ClasseSerie | no A.eSinteseDe & A.eSintetizadaPor
-    all A : ClasseSubSerie | no A.eSinteseDe & A.eSintetizadaPor
+    all A : ClasseSerie | no A.eSinteseDeSerie & A.eSintetizadaPorSerie
+    all A : ClasseSubSerie | no A.eSinteseDeSubSerie & A.eSintetizadaPorSubSerie
 }
 
 pred inv4 {
     all A, B : ClasseSerie | (
-        B in A.eSintetizadaPor implies (
+        B in A.eSintetizadaPorSerie implies (
             A.temDF in Eliminacao
         )
     )
-    all A : ClasseSubSerie, B : ClasseSerie | (
-        B in A.eSintetizadaPor implies (
+    all A : ClasseSubSerie, B : ClasseSubSerie | ( --Perguntar professor, se isto faz sentido
+        B in A.eSintetizadaPorSubSerie implies (
             A.temDF in Eliminacao
         )
     )
@@ -248,10 +258,10 @@ pred inv5 {
 		some c.eComplementar => c.temDF in Conservacao
 	}
 	all c:ClasseSerie | no c.ePaiDeSubSerie => {
-		!(some c.eComplementar) and (some c.eSinteseDe) => c.temDF in Conservacao
+		!(some c.eComplementar) and (some c.eSinteseDeSerie) => c.temDF in Conservacao
 	}
 	all c:ClasseSerie | no c.ePaiDeSubSerie => {
-		!(some c.eComplementar) and !(some c.eSinteseDe) and (some c.eSintetizadaPor) => c.temDF in Eliminacao
+		!(some c.eComplementar) and !(some c.eSinteseDeSerie) and (some c.eSintetizadaPorSerie) => c.temDF in Eliminacao
 	}
 }
 
@@ -390,6 +400,113 @@ pred inv20 {
 	}
 }
 
--- Faltam Invariantes dos tipos de relação (pág 19)
+/*
+	Um relatorio expositivo só pode ser produzido por uma entidade ou por uma tipologia
+*/
+pred inv21 {
+	all reRada:RelatorioExpositivoRada{
+		some reRada.avaliaDocProduzidaPorEnt implies no reRada.avaliaDocProduzidaPorTipEnt
+		some reRada.avaliaDocProduzidaPorTipEnt implies no reRada.avaliaDocProduzidaPorEnt
+	} 
+}
 
-run {} for 2
+/*
+	Uma classe serie só pode ser produzido por uma entidade ou por uma tipologia
+*/
+pred inv22 {
+	all c:ClasseSerie{
+		some c.produzidaPorEnt implies no c.produzidaPorTipEnt
+		some c.produzidaPorTipEnt implies no c.produzidaPorEnt
+	} 
+}
+
+/*
+	Um UI só pode ser produzido por uma entidade ou por uma tipologia
+*/
+pred inv23 {
+	all ui:UI{
+		some ui.produzidaPorEnt implies no ui.produzidaPorTipEnt
+		some ui.produzidaPorTipEnt implies no ui.produzidaPorEnt
+	} 
+}
+
+/*
+	Uma classe serie só pode ser filha de uma classe N
+*/
+pred inv24 {
+	all c:ClasseSerie{
+		some c.eFilhaDeN1 implies no c.eFilhaDeN2 and no c.eFilhaDeN3
+		some c.eFilhaDeN2 implies no c.eFilhaDeN1 and no c.eFilhaDeN3
+		some c.eFilhaDeN3 implies no c.eFilhaDeN2 and no c.eFilhaDeN1
+	}
+}
+
+/*
+	Legislação da justificação de PCA e DF pertencem à legislação da classe série pai
+*/
+pred inv25 {
+	all c:ClasseSerie{
+		 c.temDF.temJustificacaoDF.temCriterio.temLegislacao in c.reguladaPor
+		 c.temPCA.temJustificacaoPCA.temCriterio.temLegislacao in c.reguladaPor
+
+		 c.ePaiDeSubSerie.temDF.temJustificacaoDF.temCriterio.temLegislacao in c.reguladaPor
+		 c.ePaiDeSubSerie.temPCA.temJustificacaoPCA.temCriterio.temLegislacao in c.reguladaPor
+	}
+}
+
+/* A eComplementarDe B -> critério de complementaridade informacional nas just. do DF de A e B;
+     1. B tem que ser referenciado no critério de complementaridade de A;
+	 2. A tem que ser referenciado no critério de complementaridade de B; 
+*/
+pred inv26 {
+	all A, B : ClasseSerie | (
+		B in A.eComplementar implies (
+			some c : CriterioComplementaridadeInfo |
+				(c in A.temDF.temJustificacaoDF.temCriterio and B in c.temSerieRelacionada)
+		)
+	)
+}
+
+/* A eSinteseDe B -> critério de densidade informacional just. do DF de A e B;
+	1. B tem que ser referenciado no critério de densidade de A;
+	2. Adicionada relação inversa em B;
+	3. A tem que ser referenciado no critério de densidade de B; 
+*/
+pred inv27 {
+	all A, B : ClasseSerie | (
+		B in A.eSinteseDeSerie implies (
+			some c : CriterioDensidadeInformacional |
+				(c in A.temDF.temJustificacaoDF.temCriterio and B in c.temSerieRelacionada)	
+		)	
+	)
+}
+
+run {
+	 inv1
+	 inv2
+	 inv3
+	 inv4
+	 inv5
+	 inv6
+	 inv7
+	 inv8
+	 inv9
+	 inv10
+	 inv11
+	 inv12
+	 inv13
+	 inv14
+	 inv15
+	 inv16
+	 inv17
+	 inv18
+	 inv19
+	 inv20
+	 inv21
+	 inv22
+	 inv23
+	 inv24
+	 inv25
+	 inv26
+	 inv27
+}
