@@ -240,7 +240,7 @@ pred inv4 {
             A.temDF in Eliminacao
         )
     )
-    all A : ClasseSubSerie, B : ClasseSubSerie | ( --Perguntar professor, se isto faz sentido
+    all A : ClasseSubSerie, B : ClasseSubSerie | (
         B in A.eSintetizadaPorSubSerie implies (
             A.temDF in Eliminacao
         )
@@ -486,6 +486,8 @@ pred inv28{
 	all e:Entidade | e not in e.sucede
 }
 
+// A sinteseDe B
+
 //Podem duas entidades revogar a mesma legislação?
 run {
 	 inv1
@@ -515,5 +517,5 @@ run {
 	 inv25
 	 inv26
 	 inv27
-	 //inv28
+	 inv28
 }

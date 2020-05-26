@@ -1,0 +1,1077 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/lxpnh98/ontologies/2020/4/RADA"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/lxpnh98/ontologies/2020/4/RADA">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#AutoDeEliminacao"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CP"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Classe"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ClasseN1"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ClasseN2"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ClasseN3"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ClasseSerie"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ClasseSubSerie"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Conservacao"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Criterio"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CriterioComplementaridadeInfo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CriterioDensidadeInformacional"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CriterioGestionario"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CriterioLegal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CriterioUtilidadeAdministrativa"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DF"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Eliminacao"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Entidade"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Justificacao"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JustificacaoDF"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#JustificacaoPCA"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Legislacao"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PCA"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RADA"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RelatorioExpositivoRada"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TSRada"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TipologiaDeEntidade"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#REeParteDeRADA"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#TSeParteDeRADA"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#alteraLeg"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#alteradaPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#antecede"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#aprovaLeg"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#aprovaRADA"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#aprovadaPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#aprovadoPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#aprovadoPorEnt"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#aprovadoPorLeg"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#avaliaDocEliminadaPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#avaliaDocProduzidaPorEnt"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#avaliaDocProduzidaPorTipEnt"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#contemRE"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#contemTS"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#criaEntidadePorDiplomaNumero"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eComplementar"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eCriadaPorDiplomaNumero"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eCruzado"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eDaResponsabilidadeDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eExtintaPorDiplomaNumero"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eFilhaDeN1"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eFilhaDeN2"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eFilhaDeN3"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eFilhoDeN1"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eFilhoDeN2"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eFilhoDeSerie"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eFilhoDeSubSerie"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#ePaiDeN2"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#ePaiDeN3"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#ePaiDeSerie"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#ePaiDeSubSerie"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#ePaiDeUI"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eReferenciada"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eResponsavelPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eResponsavelPorAE"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eSinteseDeSerie"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eSinteseDeSubSerie"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eSintetizadaPorSerie"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eSintetizadaPorSubSerie"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eSuplementoDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eSuplementoPara"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eliminaDocAvaliadaPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eliminaDocProduzidaPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#estaIntegradaEm"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#extingueEntidadePorDiplomaNumero"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#integra"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#integraCompetenciaDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#legitimaAE"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#legitimadoPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#pertenceA"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#prodDocAvaliadaPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#prodDocEliminadaPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#produzSerie"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#produzUI"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#produzidaPorEnt"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#produzidaPorTipEnt"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#referencia"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#referenciaUI"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#referenciado"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#regulaSerie"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#reguladaPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#revogaLeg"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#revogaRADA"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#revogadaPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#revogadoPorEnt"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#revogadoPorLeg"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#sucede"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temAntecessor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temClasse"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temCompetenciasIntegradasEm"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temCriterio"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temDF"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temJustificacaoDF"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temJustificacaoPCA"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temLegislacao"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temPCA"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temSerieRelacionada"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#temSucessor"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#valor"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#AutoDeEliminacao"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#legitimadoPor"/>
+            <Class IRI="#Legislacao"/>
+        </ObjectExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ClasseN1"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Classe"/>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#pertenceA"/>
+                <Class IRI="#TSRada"/>
+            </ObjectExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ClasseN2"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Classe"/>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#eFilhoDeN1"/>
+                <Class IRI="#ClasseN1"/>
+            </ObjectExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ClasseN3"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Classe"/>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#eFilhoDeN2"/>
+                <Class IRI="#ClasseN2"/>
+            </ObjectExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ClasseSerie"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Classe"/>
+            <ObjectIntersectionOf>
+                <ObjectExactCardinality cardinality="1">
+                    <ObjectProperty IRI="#produzidaPorEnt"/>
+                    <Class IRI="#Entidade"/>
+                </ObjectExactCardinality>
+                <ObjectExactCardinality cardinality="1">
+                    <ObjectProperty IRI="#produzidaPorTipEnt"/>
+                    <Class IRI="#TipologiaDeEntidade"/>
+                </ObjectExactCardinality>
+            </ObjectIntersectionOf>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#ClasseSubSerie"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Classe"/>
+            <ObjectIntersectionOf>
+                <ObjectExactCardinality cardinality="1">
+                    <ObjectProperty IRI="#eFilhoDeSerie"/>
+                    <Class IRI="#ClasseSerie"/>
+                </ObjectExactCardinality>
+                <ObjectExactCardinality cardinality="1">
+                    <ObjectProperty IRI="#temDF"/>
+                    <Class IRI="#DF"/>
+                </ObjectExactCardinality>
+                <ObjectExactCardinality cardinality="1">
+                    <ObjectProperty IRI="#temPCA"/>
+                    <Class IRI="#PCA"/>
+                </ObjectExactCardinality>
+            </ObjectIntersectionOf>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#DF"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#temJustificacaoDF"/>
+            <Class IRI="#JustificacaoDF"/>
+        </ObjectExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Entidade"/>
+        <ObjectIntersectionOf>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#eCriadaPorDiplomaNumero"/>
+                <Class IRI="#Legislacao"/>
+            </ObjectExactCardinality>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#eExtintaPorDiplomaNumero"/>
+                <Class IRI="#Legislacao"/>
+            </ObjectExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Justificacao"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#temCriterio"/>
+            <Class IRI="#Criterio"/>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PCA"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#temJustificacaoPCA"/>
+            <Class IRI="#JustificacaoPCA"/>
+        </ObjectExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PCA"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#valor"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#RADA"/>
+        <ObjectIntersectionOf>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#aprovadoPorLeg"/>
+                <Class IRI="#Legislacao"/>
+            </ObjectExactCardinality>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#contemRE"/>
+                <Class IRI="#RelatorioExpositivoRada"/>
+            </ObjectExactCardinality>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#contemTS"/>
+                <Class IRI="#TSRada"/>
+            </ObjectExactCardinality>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#eDaResponsabilidadeDe"/>
+                <Class IRI="#Entidade"/>
+            </ObjectExactCardinality>
+            <ObjectExactCardinality cardinality="1">
+                <ObjectProperty IRI="#revogadoPorLeg"/>
+                <Class IRI="#Legislacao"/>
+            </ObjectExactCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#RelatorioExpositivoRada"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#REeParteDeRADA"/>
+            <Class IRI="#RADA"/>
+        </ObjectExactCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TSRada"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#TSeParteDeRADA"/>
+            <Class IRI="#RADA"/>
+        </ObjectExactCardinality>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#CP"/>
+        <Class IRI="#DF"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Conservacao"/>
+        <Class IRI="#DF"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CriterioComplementaridadeInfo"/>
+        <Class IRI="#Criterio"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CriterioDensidadeInformacional"/>
+        <Class IRI="#Criterio"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CriterioGestionario"/>
+        <Class IRI="#Criterio"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CriterioLegal"/>
+        <Class IRI="#Criterio"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CriterioUtilidadeAdministrativa"/>
+        <Class IRI="#Criterio"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Eliminacao"/>
+        <Class IRI="#DF"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JustificacaoDF"/>
+        <Class IRI="#Justificacao"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#JustificacaoPCA"/>
+        <Class IRI="#Justificacao"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#AutoDeEliminacao"/>
+        <Class IRI="#Classe"/>
+        <Class IRI="#Criterio"/>
+        <Class IRI="#DF"/>
+        <Class IRI="#Entidade"/>
+        <Class IRI="#Justificacao"/>
+        <Class IRI="#Legislacao"/>
+        <Class IRI="#PCA"/>
+        <Class IRI="#RADA"/>
+        <Class IRI="#RelatorioExpositivoRada"/>
+        <Class IRI="#TSRada"/>
+        <Class IRI="#TipologiaDeEntidade"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#CP"/>
+        <Class IRI="#Conservacao"/>
+        <Class IRI="#Eliminacao"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#ClasseN1"/>
+        <Class IRI="#ClasseN2"/>
+        <Class IRI="#ClasseN3"/>
+        <Class IRI="#ClasseSerie"/>
+        <Class IRI="#ClasseSubSerie"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#CriterioComplementaridadeInfo"/>
+        <Class IRI="#CriterioDensidadeInformacional"/>
+        <Class IRI="#CriterioGestionario"/>
+        <Class IRI="#CriterioLegal"/>
+        <Class IRI="#CriterioUtilidadeAdministrativa"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#JustificacaoDF"/>
+        <Class IRI="#JustificacaoPCA"/>
+    </DisjointClasses>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#REeParteDeRADA"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#TSeParteDeRADA"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#alteraLeg"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#alteradaPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#antecede"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#aprovaLeg"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#aprovaRADA"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#aprovadaPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#aprovadoPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#aprovadoPorEnt"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#aprovadoPorLeg"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#avaliaDocEliminadaPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#avaliaDocProduzidaPorEnt"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#avaliaDocProduzidaPorTipEnt"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#contemRE"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#contemTS"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#criaEntidadePorDiplomaNumero"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eComplementar"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eCriadaPorDiplomaNumero"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eCruzado"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eDaResponsabilidadeDe"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eExtintaPorDiplomaNumero"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eFilhaDeN1"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eFilhaDeN2"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eFilhaDeN3"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eFilhoDeN1"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eFilhoDeN2"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eFilhoDeSerie"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eFilhoDeSubSerie"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#ePaiDeN2"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#ePaiDeN3"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#ePaiDeSerie"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#ePaiDeSubSerie"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#ePaiDeUI"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eReferenciada"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eResponsavelPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eResponsavelPorAE"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eSinteseDeSerie"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eSinteseDeSubSerie"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eSintetizadaPorSerie"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eSintetizadaPorSubSerie"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eSuplementoDe"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eSuplementoPara"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eliminaDocAvaliadaPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eliminaDocProduzidaPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#estaIntegradaEm"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#extingueEntidadePorDiplomaNumero"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#integra"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#integraCompetenciaDe"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#legitimaAE"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#legitimadoPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#pertenceA"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#prodDocAvaliadaPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#prodDocEliminadaPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#produzSerie"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#produzUI"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#produzidaPorEnt"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#produzidaPorTipEnt"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#referencia"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#referenciaUI"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#referenciado"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#regulaSerie"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#reguladaPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#revogaLeg"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#revogaRADA"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#revogadaPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#revogadoPorEnt"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#revogadoPorLeg"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#sucede"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temAntecessor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temClasse"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temCompetenciasIntegradasEm"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temCriterio"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temDF"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temJustificacaoDF"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temJustificacaoPCA"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temLegislacao"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temPCA"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temSerieRelacionada"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#temSucessor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#REeParteDeRADA"/>
+        <ObjectProperty IRI="#contemRE"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#TSeParteDeRADA"/>
+        <ObjectProperty IRI="#contemTS"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#alteraLeg"/>
+        <ObjectProperty IRI="#alteradaPor"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#antecede"/>
+        <ObjectProperty IRI="#sucede"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#aprovaLeg"/>
+        <ObjectProperty IRI="#aprovadaPor"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#aprovaRADA"/>
+        <ObjectProperty IRI="#aprovadoPorEnt"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#aprovaRADA"/>
+        <ObjectProperty IRI="#aprovadoPorLeg"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#avaliaDocEliminadaPor"/>
+        <ObjectProperty IRI="#eliminaDocAvaliadaPor"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#avaliaDocProduzidaPorEnt"/>
+        <ObjectProperty IRI="#prodDocAvaliadaPor"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#avaliaDocProduzidaPorTipEnt"/>
+        <ObjectProperty IRI="#prodDocAvaliadaPor"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#criaEntidadePorDiplomaNumero"/>
+        <ObjectProperty IRI="#eCriadaPorDiplomaNumero"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#eDaResponsabilidadeDe"/>
+        <ObjectProperty IRI="#eResponsavelPor"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#eDaResponsabilidadeDe"/>
+        <ObjectProperty IRI="#eResponsavelPorAE"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#eExtintaPorDiplomaNumero"/>
+        <ObjectProperty IRI="#extingueEntidadePorDiplomaNumero"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#eFilhaDeN1"/>
+        <ObjectProperty IRI="#ePaiDeN2"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#eFilhaDeN2"/>
+        <ObjectProperty IRI="#ePaiDeN3"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#eFilhoDeSerie"/>
+        <ObjectProperty IRI="#ePaiDeSubSerie"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#eSinteseDeSerie"/>
+        <ObjectProperty IRI="#eSintetizadaPorSerie"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#eSinteseDeSubSerie"/>
+        <ObjectProperty IRI="#eSintetizadaPorSubSerie"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#eSuplementoDe"/>
+        <ObjectProperty IRI="#eSuplementoPara"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#eliminaDocProduzidaPor"/>
+        <ObjectProperty IRI="#prodDocEliminadaPor"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#estaIntegradaEm"/>
+        <ObjectProperty IRI="#integra"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#integraCompetenciaDe"/>
+        <ObjectProperty IRI="#temCompetenciasIntegradasEm"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#legitimaAE"/>
+        <ObjectProperty IRI="#legitimadoPor"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#pertenceA"/>
+        <ObjectProperty IRI="#temClasse"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#referenciaUI"/>
+        <ObjectProperty IRI="#referenciado"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#regulaSerie"/>
+        <ObjectProperty IRI="#reguladaPor"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#revogaLeg"/>
+        <ObjectProperty IRI="#revogadaPor"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#revogaRADA"/>
+        <ObjectProperty IRI="#revogadoPorEnt"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#revogaRADA"/>
+        <ObjectProperty IRI="#revogadoPorLeg"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#temAntecessor"/>
+        <ObjectProperty IRI="#temSucessor"/>
+    </InverseObjectProperties>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#aprovadoPorLeg"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#contemRE"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#contemTS"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#eCriadaPorDiplomaNumero"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#eExtintaPorDiplomaNumero"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#eFilhaDeN1"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#eFilhaDeN2"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#eFilhaDeN3"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#eFilhoDeN1"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#eFilhoDeN2"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#legitimadoPor"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#pertenceA"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#revogadoPorLeg"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#temDF"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#temJustificacaoDF"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#temJustificacaoPCA"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#temPCA"/>
+    </FunctionalObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#eComplementar"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#eCruzado"/>
+    </SymmetricObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#sucede"/>
+    </IrreflexiveObjectProperty>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
