@@ -6,6 +6,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      ontologyIRI="http://www.semanticweb.org/lxpnh98/ontologies/2020/4/RADA">
+    <Prefix name="" IRI="http://www.semanticweb.org/lxpnh98/ontologies/2020/4/RADA"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
@@ -93,10 +94,22 @@
         <Class IRI="#TipologiaDeEntidade"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#REeParteDeRADA"/>
+        <Class IRI="#UI"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#TSeParteDeRADA"/>
+        <ObjectProperty IRI="#ClasseSerie_ePaiDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Classe_ePaiDeSerie"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Entidade_eResponsavelPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#RADA_aprovadoPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#RE_avaliaDocProduzidaPor"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#alteraLeg"/>
@@ -135,6 +148,9 @@
         <ObjectProperty IRI="#avaliaDocProduzidaPorTipEnt"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#contem"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#contemRE"/>
     </Declaration>
     <Declaration>
@@ -157,6 +173,9 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#eExtintaPorDiplomaNumero"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eFilhaDe"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#eFilhaDeN1"/>
@@ -189,10 +208,22 @@
         <ObjectProperty IRI="#ePaiDeSerie"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#ePaiDeSerieClasseN1"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#ePaiDeSerieClasseN2"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#ePaiDeSerieClasseN3"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#ePaiDeSubSerie"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#ePaiDeUI"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#eParteDeRADA"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#eReferenciada"/>
@@ -449,45 +480,6 @@
             <Datatype abbreviatedIRI="xsd:int"/>
         </DataSomeValuesFrom>
     </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#RADA"/>
-        <ObjectIntersectionOf>
-            <ObjectExactCardinality cardinality="1">
-                <ObjectProperty IRI="#aprovadoPorLeg"/>
-                <Class IRI="#Legislacao"/>
-            </ObjectExactCardinality>
-            <ObjectExactCardinality cardinality="1">
-                <ObjectProperty IRI="#contemRE"/>
-                <Class IRI="#RelatorioExpositivoRada"/>
-            </ObjectExactCardinality>
-            <ObjectExactCardinality cardinality="1">
-                <ObjectProperty IRI="#contemTS"/>
-                <Class IRI="#TSRada"/>
-            </ObjectExactCardinality>
-            <ObjectExactCardinality cardinality="1">
-                <ObjectProperty IRI="#eDaResponsabilidadeDe"/>
-                <Class IRI="#Entidade"/>
-            </ObjectExactCardinality>
-            <ObjectExactCardinality cardinality="1">
-                <ObjectProperty IRI="#revogadoPorLeg"/>
-                <Class IRI="#Legislacao"/>
-            </ObjectExactCardinality>
-        </ObjectIntersectionOf>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#RelatorioExpositivoRada"/>
-        <ObjectExactCardinality cardinality="1">
-            <ObjectProperty IRI="#REeParteDeRADA"/>
-            <Class IRI="#RADA"/>
-        </ObjectExactCardinality>
-    </EquivalentClasses>
-    <EquivalentClasses>
-        <Class IRI="#TSRada"/>
-        <ObjectExactCardinality cardinality="1">
-            <ObjectProperty IRI="#TSeParteDeRADA"/>
-            <Class IRI="#RADA"/>
-        </ObjectExactCardinality>
-    </EquivalentClasses>
     <SubClassOf>
         <Class IRI="#CP"/>
         <Class IRI="#DF"/>
@@ -527,6 +519,20 @@
     <SubClassOf>
         <Class IRI="#JustificacaoPCA"/>
         <Class IRI="#Justificacao"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RelatorioExpositivoRada"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#eParteDeRADA"/>
+            <Class IRI="#RADA"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TSRada"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#eParteDeRADA"/>
+            <Class IRI="#RADA"/>
+        </ObjectExactCardinality>
     </SubClassOf>
     <DisjointClasses>
         <Class IRI="#AutoDeEliminacao"/>
@@ -566,11 +572,23 @@
         <Class IRI="#JustificacaoPCA"/>
     </DisjointClasses>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#REeParteDeRADA"/>
+        <ObjectProperty IRI="#ClasseSerie_ePaiDe"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#TSeParteDeRADA"/>
+        <ObjectProperty IRI="#Classe_ePaiDeSerie"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#Entidade_eResponsavelPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#RADA_aprovadoPor"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#RE_avaliaDocProduzidaPor"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
@@ -603,7 +621,15 @@
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#aprovadoPorEnt"/>
+        <ObjectProperty IRI="#RADA_aprovadoPor"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#aprovadoPorEnt"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#aprovadoPorLeg"/>
+        <ObjectProperty IRI="#RADA_aprovadoPor"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#aprovadoPorLeg"/>
@@ -615,7 +641,15 @@
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#avaliaDocProduzidaPorEnt"/>
+        <ObjectProperty IRI="#RE_avaliaDocProduzidaPor"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#avaliaDocProduzidaPorEnt"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#avaliaDocProduzidaPorTipEnt"/>
+        <ObjectProperty IRI="#RE_avaliaDocProduzidaPor"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#avaliaDocProduzidaPorTipEnt"/>
@@ -623,11 +657,11 @@
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#contemRE"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+        <ObjectProperty IRI="#contem"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#contemTS"/>
-        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+        <ObjectProperty IRI="#contem"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#criaEntidadePorDiplomaNumero"/>
@@ -654,12 +688,28 @@
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eFilhaDe"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eFilhaDeN1"/>
+        <ObjectProperty IRI="#eFilhaDe"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
         <ObjectProperty IRI="#eFilhaDeN1"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#eFilhaDeN2"/>
+        <ObjectProperty IRI="#eFilhaDe"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eFilhaDeN2"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eFilhaDeN3"/>
+        <ObjectProperty IRI="#eFilhaDe"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#eFilhaDeN3"/>
@@ -694,11 +744,35 @@
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
+        <ObjectProperty IRI="#ePaiDeSerieClasseN1"/>
+        <ObjectProperty IRI="#Classe_ePaiDeSerie"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#ePaiDeSerieClasseN2"/>
+        <ObjectProperty IRI="#Classe_ePaiDeSerie"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#ePaiDeSerieClasseN3"/>
+        <ObjectProperty IRI="#Classe_ePaiDeSerie"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#ePaiDeSubSerie"/>
+        <ObjectProperty IRI="#ClasseSerie_ePaiDe"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
         <ObjectProperty IRI="#ePaiDeSubSerie"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#ePaiDeUI"/>
+        <ObjectProperty IRI="#ClasseSerie_ePaiDe"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#ePaiDeUI"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eParteDeRADA"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
@@ -707,7 +781,15 @@
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#eResponsavelPor"/>
+        <ObjectProperty IRI="#Entidade_eResponsavelPor"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eResponsavelPor"/>
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#eResponsavelPorAE"/>
+        <ObjectProperty IRI="#Entidade_eResponsavelPor"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#eResponsavelPorAE"/>
@@ -886,12 +968,24 @@
         <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
     </SubObjectPropertyOf>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#REeParteDeRADA"/>
-        <ObjectProperty IRI="#contemRE"/>
+        <ObjectProperty IRI="#ClasseSerie_ePaiDe"/>
+        <ObjectProperty IRI="#eFilhoDeSerie"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#TSeParteDeRADA"/>
-        <ObjectProperty IRI="#contemTS"/>
+        <ObjectProperty IRI="#Classe_ePaiDeSerie"/>
+        <ObjectProperty IRI="#eFilhaDe"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#Entidade_eResponsavelPor"/>
+        <ObjectProperty IRI="#eDaResponsabilidadeDe"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#RADA_aprovadoPor"/>
+        <ObjectProperty IRI="#aprovaRADA"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#RE_avaliaDocProduzidaPor"/>
+        <ObjectProperty IRI="#prodDocAvaliadaPor"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#alteraLeg"/>
@@ -906,36 +1000,16 @@
         <ObjectProperty IRI="#aprovadaPor"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#aprovaRADA"/>
-        <ObjectProperty IRI="#aprovadoPorEnt"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#aprovaRADA"/>
-        <ObjectProperty IRI="#aprovadoPorLeg"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
         <ObjectProperty IRI="#avaliaDocEliminadaPor"/>
         <ObjectProperty IRI="#eliminaDocAvaliadaPor"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#avaliaDocProduzidaPorEnt"/>
-        <ObjectProperty IRI="#prodDocAvaliadaPor"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#avaliaDocProduzidaPorTipEnt"/>
-        <ObjectProperty IRI="#prodDocAvaliadaPor"/>
+        <ObjectProperty IRI="#contem"/>
+        <ObjectProperty IRI="#eParteDeRADA"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#criaEntidadePorDiplomaNumero"/>
         <ObjectProperty IRI="#eCriadaPorDiplomaNumero"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#eDaResponsabilidadeDe"/>
-        <ObjectProperty IRI="#eResponsavelPor"/>
-    </InverseObjectProperties>
-    <InverseObjectProperties>
-        <ObjectProperty IRI="#eDaResponsabilidadeDe"/>
-        <ObjectProperty IRI="#eResponsavelPorAE"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#eExtintaPorDiplomaNumero"/>
@@ -943,15 +1017,23 @@
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#eFilhaDeN1"/>
-        <ObjectProperty IRI="#ePaiDeN2"/>
+        <ObjectProperty IRI="#ePaiDeSerieClasseN1"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#eFilhaDeN2"/>
-        <ObjectProperty IRI="#ePaiDeN3"/>
+        <ObjectProperty IRI="#ePaiDeSerieClasseN2"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
-        <ObjectProperty IRI="#eFilhoDeSerie"/>
-        <ObjectProperty IRI="#ePaiDeSubSerie"/>
+        <ObjectProperty IRI="#eFilhaDeN3"/>
+        <ObjectProperty IRI="#ePaiDeSerieClasseN3"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#eFilhoDeN1"/>
+        <ObjectProperty IRI="#ePaiDeN2"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#eFilhoDeN2"/>
+        <ObjectProperty IRI="#ePaiDeN3"/>
     </InverseObjectProperties>
     <InverseObjectProperties>
         <ObjectProperty IRI="#eSinteseDeSerie"/>
@@ -1013,12 +1095,6 @@
         <ObjectProperty IRI="#aprovadoPorLeg"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
-        <ObjectProperty IRI="#contemRE"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="#contemTS"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
         <ObjectProperty IRI="#eCriadaPorDiplomaNumero"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -1038,6 +1114,9 @@
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#eFilhoDeN2"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#eParteDeRADA"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#legitimadoPor"/>
@@ -1069,6 +1148,248 @@
     <IrreflexiveObjectProperty>
         <ObjectProperty IRI="#sucede"/>
     </IrreflexiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#Classe_ePaiDeSerie"/>
+        <ObjectUnionOf>
+            <Class IRI="#ClasseN1"/>
+            <Class IRI="#ClasseN2"/>
+            <Class IRI="#ClasseN3"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#Entidade_eResponsavelPor"/>
+        <Class IRI="#Entidade"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#RADA_aprovadoPor"/>
+        <Class IRI="#RADA"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#RE_avaliaDocProduzidaPor"/>
+        <Class IRI="#RelatorioExpositivoRada"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#alteraLeg"/>
+        <Class IRI="#Legislacao"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#alteradaPor"/>
+        <Class IRI="#Legislacao"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#antecede"/>
+        <Class IRI="#Entidade"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#aprovaRADA"/>
+        <ObjectUnionOf>
+            <Class IRI="#Entidade"/>
+            <Class IRI="#Legislacao"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#aprovadaPor"/>
+        <Class IRI="#Legislacao"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#aprovadoPor"/>
+        <Class IRI="#AutoDeEliminacao"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#aprovadoPorEnt"/>
+        <Class IRI="#RADA"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#aprovadoPorLeg"/>
+        <Class IRI="#RADA"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#avaliaDocEliminadaPor"/>
+        <Class IRI="#RADA"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#avaliaDocProduzidaPorEnt"/>
+        <Class IRI="#RelatorioExpositivoRada"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#avaliaDocProduzidaPorTipEnt"/>
+        <Class IRI="#RelatorioExpositivoRada"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#contem"/>
+        <Class IRI="#RADA"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#criaEntidadePorDiplomaNumero"/>
+        <Class IRI="#Legislacao"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#eComplementar"/>
+        <Class IRI="#ClasseSerie"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#eCruzado"/>
+        <Class IRI="#ClasseSerie"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#eDaResponsabilidadeDe"/>
+        <ObjectUnionOf>
+            <Class IRI="#AutoDeEliminacao"/>
+            <Class IRI="#RADA"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#eExtintaPorDiplomaNumero"/>
+        <Class IRI="#Entidade"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#eFilhaDe"/>
+        <Class IRI="#ClasseSerie"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#eFilhoDeN1"/>
+        <Class IRI="#ClasseN2"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#eFilhoDeN2"/>
+        <Class IRI="#ClasseN3"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#eFilhoDeSerie"/>
+        <ObjectUnionOf>
+            <Class IRI="#ClasseSubSerie"/>
+            <Class IRI="#UI"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#eParteDeRADA"/>
+        <ObjectUnionOf>
+            <Class IRI="#RelatorioExpositivoRada"/>
+            <Class IRI="#TSRada"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#prodDocAvaliadaPor"/>
+        <ObjectUnionOf>
+            <Class IRI="#Entidade"/>
+            <Class IRI="#TipologiaDeEntidade"/>
+        </ObjectUnionOf>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#ClasseSerie_ePaiDe"/>
+        <ObjectUnionOf>
+            <Class IRI="#ClasseSubSerie"/>
+            <Class IRI="#UI"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#Entidade_eResponsavelPor"/>
+        <ObjectUnionOf>
+            <Class IRI="#AutoDeEliminacao"/>
+            <Class IRI="#RADA"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#RADA_aprovadoPor"/>
+        <ObjectUnionOf>
+            <Class IRI="#Entidade"/>
+            <Class IRI="#Legislacao"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#RE_avaliaDocProduzidaPor"/>
+        <ObjectUnionOf>
+            <Class IRI="#Entidade"/>
+            <Class IRI="#TipologiaDeEntidade"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#alteraLeg"/>
+        <Class IRI="#Legislacao"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#alteradaPor"/>
+        <Class IRI="#Legislacao"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#antecede"/>
+        <Class IRI="#Entidade"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#aprovadaPor"/>
+        <Class IRI="#Entidade"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#aprovadoPor"/>
+        <Class IRI="#Entidade"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#aprovadoPorEnt"/>
+        <Class IRI="#Entidade"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#aprovadoPorLeg"/>
+        <Class IRI="#Legislacao"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#avaliaDocEliminadaPor"/>
+        <Class IRI="#AutoDeEliminacao"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#avaliaDocProduzidaPorEnt"/>
+        <Class IRI="#Entidade"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#avaliaDocProduzidaPorTipEnt"/>
+        <Class IRI="#TipologiaDeEntidade"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#contem"/>
+        <ObjectUnionOf>
+            <Class IRI="#RelatorioExpositivoRada"/>
+            <Class IRI="#TSRada"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#criaEntidadePorDiplomaNumero"/>
+        <Class IRI="#Entidade"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#eExtintaPorDiplomaNumero"/>
+        <Class IRI="#Legislacao"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#eFilhaDe"/>
+        <ObjectUnionOf>
+            <Class IRI="#ClasseN1"/>
+            <Class IRI="#ClasseN2"/>
+            <Class IRI="#ClasseN3"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#eFilhaDeN1"/>
+        <Class IRI="#ClasseN1"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#eFilhaDeN2"/>
+        <Class IRI="#ClasseN2"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#eFilhaDeN3"/>
+        <Class IRI="#ClasseN3"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#eFilhoDeN1"/>
+        <Class IRI="#ClasseN1"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#eFilhoDeN2"/>
+        <Class IRI="#ClasseN2"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#eFilhoDeSerie"/>
+        <Class IRI="#ClasseSerie"/>
+    </ObjectPropertyRange>
 </Ontology>
 
 
