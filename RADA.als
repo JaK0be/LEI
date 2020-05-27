@@ -25,7 +25,6 @@ sig TSRada {
 /* Relações Compostas */
 sig PCA {
 	temJustificacaoPCA : one JustificacaoPCA,
-	valor: one Int
 }
 
 abstract sig DF{
