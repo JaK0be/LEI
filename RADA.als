@@ -34,7 +34,7 @@ abstract sig DF{
 sig Eliminacao, Conservacao, CP extends DF{}
 
 abstract sig Justificacao {
-	temCriterio: some Criterio -- Tem no máximo 3 criterios
+	temCriterio: some Criterio
 }
 sig JustificacaoDF, JustificacaoPCA extends Justificacao {}
 
@@ -57,7 +57,7 @@ abstract sig Classe {
 
 sig ClasseN1 extends Classe {
 	ePaiDeN2 : set ClasseN2,
-	ePaiDeSerie : set ClasseSerie -- Perguntar se pode ser pai de serie
+	ePaiDeSerie : set ClasseSerie
 }
 
 sig ClasseN2 extends Classe {
@@ -76,13 +76,13 @@ sig ClasseSerie extends Classe {
 	eFilhaDeN2 : lone ClasseN2,
 	eFilhaDeN3 : lone ClasseN3,
 	ePaiDeSubSerie : set ClasseSubSerie,
-	produzidaPorEnt : one Entidade, -- COnjunto definido em cima
-	produzidaPorTipEnt : one TipologiaDeEntidade,  -- COnjunto definido em cima
+	produzidaPorEnt : one Entidade,
+	produzidaPorTipEnt : one TipologiaDeEntidade,
 	reguladaPor : set Legislacao,
-	temPCA : lone PCA, -- Alterei para lone, para invariantes sobre df e pca fazerem sentido
+	temPCA : lone PCA,
 	eSuplementoDe : set ClasseSerie,
 	eSuplementoPara : set ClasseSerie,
-	temDF : lone DF, -- Alterei para lone, para invariantes sobre df e pca fazerem sentido
+	temDF : lone DF,
 	eComplementar : set ClasseSerie,
 	eSintetizadaPorSerie : set ClasseSerie,
 	eSinteseDeSerie : set ClasseSerie,
@@ -106,7 +106,7 @@ sig UI {
 	eFilhoDeSerie : set ClasseSerie,
 	eFilhoDeSubSerie : set ClasseSubSerie,
 	referenciado : set AutoDeEliminacao,
-	produzidaPorEnt : set Entidade, -- lone?
+	produzidaPorEnt : set Entidade,
 	produzidaPorTipEnt : set TipologiaDeEntidade
 }
 
@@ -115,7 +115,7 @@ sig Entidade {
 	sucede : set Entidade,
 	integraCompetenciaDe : set Entidade,
 	temCompetenciasIntegradasEm : set Entidade,
-	estaIntegradaEm : set TipologiaDeEntidade, --talvez some
+	estaIntegradaEm : set TipologiaDeEntidade,
 	eCriadaPorDiplomaNumero : one Legislacao,
 	eExtintaPorDiplomaNumero : one Legislacao,
 	aprovaLeg : set Legislacao,
@@ -152,11 +152,11 @@ sig Legislacao {
 }
 
 sig AutoDeEliminacao{
-	referencia : set ClasseSerie + ClasseSubSerie, --Provavelmente esta errado
+	referencia : set ClasseSerie + ClasseSubSerie, 
 	eliminaDocProduzidaPor : set Entidade,
 	eDaResponsabilidadeDe : set Entidade,
 	aprovadoPor : set Entidade,
-	legitimadoPor : one Legislacao, -- Verificar  se está correto
+	legitimadoPor : one Legislacao,
 	eliminaDocAvaliadaPor : set RADA,
 	referenciaUI : set UI
 }
