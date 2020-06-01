@@ -161,7 +161,7 @@ sig AutoDeEliminacao{
 	referenciaUI : set UI
 }
 
-/*-- Releções Inversas --*/
+/*-- Relações Inversas --*/
 fact {
     contemRE = ~eParteDeRADA
     contemTS = ~eParteDeRADA
