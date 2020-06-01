@@ -1,13 +1,15 @@
 open RelCalc
 
+/*-- Especificação Entidades --*/
+
 sig RADA  {
-	contemRE : one RelatorioExpositivoRada, -- Ver se é set ou não
-	contemTS : one TSRada, -- Ver se é set ou não
+	contemRE : one RelatorioExpositivoRada, 
+	contemTS : one TSRada, 
 	aprovadoPorLeg : one Legislacao,
 	revogadoPorLeg : one Legislacao,
 	aprovadoPorEnt : set Entidade,
 	revogadoPorEnt : set Entidade,
-	eDaResponsabilidadeDe : one Entidade, --Entidade que armazena informação
+	eDaResponsabilidadeDe : one Entidade, 
 	avaliaDocEliminadaPor : set AutoDeEliminacao	
 }
 
@@ -22,7 +24,6 @@ sig TSRada {
 	temClasse : set Classe
 }
 
-/* Relações Compostas */
 sig PCA {
 	temJustificacaoPCA : one JustificacaoPCA,
 }
@@ -49,7 +50,6 @@ sig CriterioUtilidadeAdministrativa, CriterioComplementaridadeInfo, CriterioDens
 sig CriterioLegal extends Criterio{
 	temLegislacao : set Legislacao
 }
-/*--------------------*/
 
 abstract sig Classe {
 	pertenceA : one TSRada,
@@ -161,7 +161,7 @@ sig AutoDeEliminacao{
 	referenciaUI : set UI
 }
 
-/* Factos */
+/*-- Releções Inversas --*/
 fact {
     contemRE = ~eParteDeRADA
     contemTS = ~eParteDeRADA
@@ -188,7 +188,7 @@ fact {
     eSuplementoDe = ~eSuplementoPara
     eComplementar = ~eComplementar -- relação simétrica
     eSintetizadaPorSerie = ~eSinteseDeSerie
-	eSintetizadaPorSubSerie  = ~eSinteseDeSubSerie
+    eSintetizadaPorSubSerie  = ~eSinteseDeSubSerie
     temSucessor = ~temAntecessor
     ClasseSerie <: ePaiDeUI = ~eFilhoDeSerie
     ClasseSubSerie <: ePaiDeUI = ~eFilhoDeSubSerie
@@ -215,7 +215,7 @@ pred inv1 {
 	1. A.temPCA.temJustificacaoPCA.temCriterio CriterioUtilidadeAdministrativa;
 	2. CriterioUtilidadeAdministrativa c.temSerieRelacionada B;
 	3. -> B suplementoDe A;
- */
+*/
 pred inv2 {
 	all A, B : ClasseSerie | (
         B in A.eSuplementoPara implies (
@@ -226,13 +226,13 @@ pred inv2 {
 }
 
 
-/* classe não pode ter em simultâneo relações de sinteseDe e eSintetizadoPor
- */
+/* Uma classe não pode ter em simultâneo relações de sinteseDe e eSintetizadoPor */
 pred inv3 {
     all A : ClasseSerie | no A.eSinteseDeSerie & A.eSintetizadaPorSerie
     all A : ClasseSubSerie | no A.eSinteseDeSubSerie & A.eSintetizadaPorSubSerie
 }
 
+/* Se classe eSintetizadaPorSerie então o seu DF será eliminação*/
 pred inv4 {
     all A, B : ClasseSerie | (
         B in A.eSintetizadaPorSerie implies (
@@ -264,7 +264,7 @@ pred inv5 {
 	}
 }
 
--- Se uma Classe pertence a uma TSRada, consequentemente os seus descendentes tambem têm de pertencer
+/* Se uma Classe pertence a uma TSRada, consequentemente os seus descendentes tambem têm de pertencer */
 pred inv6 {
 	all c:ClasseN1,ts:TSRada | ts = c.pertenceA =>
 		(all cf:c.ePaiDeN2 | ts = cf.pertenceA) and
@@ -281,7 +281,7 @@ pred inv6 {
         (all cfsubserie:c.ePaiDeSubSerie | ts = cfsubserie.pertenceA)
 }
 
--- Se uma Classe não pertence a uma TSRada, consequentemente os seus descendentes tambem não pertencem
+/* Se uma Classe não pertence a uma TSRada, consequentemente os seus descendentes tambem não pertencem */
 pred inv7 {
 	all c:ClasseN1 | no c.pertenceA =>
 		(all cf:c.ePaiDeN2 | no cf.pertenceA) and
@@ -308,23 +308,32 @@ pred inv9 {
 	all c:ClasseSerie | no c.ePaiDeSubSerie => one c.temDF and one c.temPCA
 }
 
+/* Justificações/Criterios/DF/PCA necessitam de pertencer a uma qualquer entidade no modelo */
+pred inv10 {
+	all j:JustificacaoDF | j in DF.temJustificacaoDF
+	all j:JustificacaoPCA | j in PCA.temJustificacaoPCA
+	all df:DF | df in (ClasseSerie.temDF + ClasseSubSerie.temDF)
+	all pca:PCA | pca in (ClasseSerie.temPCA + ClasseSubSerie.temPCA)
+	all c:Criterio | c  in Justificacao.temCriterio
+}
+
 /* As relações eComplementar e eCruzado são simétricas. */
 pred inv11 {
 	Symmetric[eComplementar]
 	Symmetric[eCruzado]
 }
 
-/* 2 DFs nao podem ter a mesma instancia de Justificacao */
+/* 2 DFs disjuntos não podem ter a mesma instância de Justificacao */
 pred inv12 {
 	all disj d1,d2:DF | d1.temJustificacaoDF != d2.temJustificacaoDF
 }
 
-/* 2 PCAs nao podem ter a mesma instancia de Justificacao */
+/* 2 PCAs disjuntos não podem ter a mesma instância de Justificacao */
 pred inv13 {
 	all disj pca1,pca2:PCA | pca1.temJustificacaoPCA != pca2.temJustificacaoPCA
 }
 
-/* 2 Classes disjuntas nao podem ter a mesma instancia de DF */
+/* 2 Classes disjuntas não podem ter a mesma instância de DF */
 pred inv14 {
 	all disj c1,c2:ClasseSerie {
 		c1.temDF != c2.temDF
@@ -337,7 +346,7 @@ pred inv14 {
 	}
 }
 
-/* 2 Classes disjuntas nao podem ter a mesma instancia de PCA */
+/* 2 Classes disjuntas não podem ter a mesma instância de PCA */
 pred inv15 {
 	all disj c1,c2:ClasseSerie {
 		c1.temPCA != c2.temPCA
@@ -350,7 +359,7 @@ pred inv15 {
 	}
 }
 
-/* 2 Justificações nao podem ter a mesma instancia de CriterioJustificacao */
+/* 2 Justificações não podem ter a mesma instância de CriterioJustificacao */
 pred inv16 {
 	all disj j1,j2:Justificacao | all c:Criterio | c in j1.temCriterio => c not in j2.temCriterio
 }
@@ -373,14 +382,12 @@ pred inv18 {
 						}
 }
 
-/* 2 Classes Serie nao podem ter os mesmos filhos */
+/* 2 Classes Série disjuntas não podem ter os mesmos filhos */
 pred inv19 {
 	all disj c1,c2:ClasseSerie | all c3:ClasseSubSerie | c3 in c1.ePaiDeSubSerie => c3 not in c2.ePaiDeSubSerie
 }
 
-/*
-	Cada justificação tem no máximo 1 Criterio de cada tipo.
-*/
+/* Cada justificação tem no máximo 1 Criterio de cada tipo. */
 pred inv20 {
 	all j:Justificacao {
 		lone crit1:CriterioComplementaridadeInfo | crit1 in j.temCriterio
@@ -391,9 +398,7 @@ pred inv20 {
 	}
 }
 
-/*
-	Um relatorio expositivo só pode ser produzido por uma entidade ou por uma tipologia
-*/
+/* Um relatório expositivo só pode ser produzido por uma entidade ou por uma tipologia */
 pred inv21 {
 	all reRada:RelatorioExpositivoRada{
 		some reRada.avaliaDocProduzidaPorEnt implies no reRada.avaliaDocProduzidaPorTipEnt
@@ -401,9 +406,7 @@ pred inv21 {
 	} 
 }
 
-/*
-	Uma classe serie só pode ser produzido por uma entidade ou por uma tipologia
-*/
+/* Uma classe série só pode ser produzida por uma entidade ou por uma tipologia */
 pred inv22 {
 	all c:ClasseSerie{
 		some c.produzidaPorEnt implies no c.produzidaPorTipEnt
@@ -411,9 +414,7 @@ pred inv22 {
 	} 
 }
 
-/*
-	Um UI só pode ser produzido por uma entidade ou por uma tipologia
-*/
+/* Uma UI só pode ser produzido por uma entidade ou por uma tipologia */
 pred inv23 {
 	all ui:UI{
 		some ui.produzidaPorEnt implies no ui.produzidaPorTipEnt
@@ -421,9 +422,7 @@ pred inv23 {
 	} 
 }
 
-/*
-	Uma classe serie só pode ser filha de uma classe N
-*/
+/* Uma classe série só pode ser filha de uma única classe do tipo N */
 pred inv24 {
 	all c:ClasseSerie{
 		some c.eFilhaDeN1 implies no c.eFilhaDeN2 and no c.eFilhaDeN3
@@ -432,9 +431,7 @@ pred inv24 {
 	}
 }
 
-/*
-	Legislação da justificação de PCA e DF pertencem à legislação da classe série pai
-*/
+/* Legislação da justificação de PCA e DF pertencem à legislação da classe série pai */
 pred inv25 {
 	all c:ClasseSerie{
 		 c.temDF.temJustificacaoDF.temCriterio.temLegislacao in c.reguladaPor
@@ -445,9 +442,10 @@ pred inv25 {
 	}
 }
 
-/* A eComplementarDe B -> critério de complementaridade informacional nas just. do DF de A e B;
-     1. B tem que ser referenciado no critério de complementaridade de A;
-	 2. A tem que ser referenciado no critério de complementaridade de B; 
+/* 
+     A eComplementarDe B -> critério de complementaridade informacional nas just. do DF de A e B;
+     	1. B tem que ser referenciado no critério de complementaridade de A;
+     	2. A tem que ser referenciado no critério de complementaridade de B; 
 */
 pred inv26 {
 	all A, B : ClasseSerie | (
@@ -472,22 +470,11 @@ pred inv27 {
 	)
 }
 
-pred inv10 {
-	all j:JustificacaoDF | j in DF.temJustificacaoDF
-	all j:JustificacaoPCA | j in PCA.temJustificacaoPCA
-	all df:DF | df in (ClasseSerie.temDF + ClasseSubSerie.temDF)
-	all pca:PCA | pca in (ClasseSerie.temPCA + ClasseSubSerie.temPCA)
-	all c:Criterio | c  in Justificacao.temCriterio
-}
-
-// Entidade não sucede a si própria
+/*Uma entidade não se sucede a si própria */
 pred inv28{
 	all e:Entidade | e not in e.sucede
 }
 
-// A sinteseDe B
-
-//Podem duas entidades revogar a mesma legislação?
 run {
 	 inv1
 	 inv2
