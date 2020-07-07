@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge attribute="yes"/>
+
+<node>
+   <type name="ClasseN1"/>
+   <type name="ClasseN2"/>
+   <type name="ClasseN3"/>
+   <type name="ClasseSerie"/>
+   <type name="ClasseSubSerie"/>
+   <type name="CriterioComplementaridadeInfo"/>
+   <type name="CriterioDensidadeInformacional"/>
+   <type name="CriterioGestionario"/>
+   <type name="CriterioLegal"/>
+   <type name="CriterioUtilidadeAdministrativa"/>
+   <type name="Int"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+</node>
+
+<node color="Blue">
+   <type name="DF"/>
+   <type name="RelatorioExpositivoRada"/>
+</node>
+
+<node color="Gray">
+   <type name="TSRada"/>
+</node>
+
+<node color="Green">
+   <type name="Classe"/>
+   <type name="RADA"/>
+</node>
+
+<node color="Red">
+   <type name="Criterio"/>
+   <type name="TipologiaDeEntidade"/>
+</node>
+
+<node color="White">
+   <type name="Justificacao"/>
+   <type name="UI"/>
+</node>
+
+<node shape="Box">
+   <type name="Conservacao"/>
+</node>
+
+<node shape="Ellipse" color="Yellow">
+   <type name="AutoDeEliminacao"/>
+</node>
+
+<node shape="Hexagon" color="Yellow">
+   <type name="PCA"/>
+</node>
+
+<node shape="House">
+   <type name="Eliminacao"/>
+</node>
+
+<node shape="Inv House">
+   <type name="JustificacaoPCA"/>
+</node>
+
+<node shape="Inv Triangle">
+   <type name="JustificacaoDF"/>
+</node>
+
+<node shape="Lined Diamond" color="Black">
+   <type name="Legislacao"/>
+</node>
+
+<node shape="Parallelogram" color="Gray">
+   <type name="Entidade"/>
+</node>
+
+<node shape="Trapezoid">
+   <type name="CP"/>
+</node>
+
+</view>
+
+</alloy>

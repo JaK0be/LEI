@@ -443,7 +443,7 @@ pred inv25 {
 		 c.ePaiDeSubSerie.temPCA.temJustificacaoPCA.temCriterio.temLegislacao in c.reguladaPor
 	}
 }
-
+ 
 /* 
      A eComplementarDe B -> critério de complementaridade informacional nas just. do DF de A e B;
      	1. B tem que ser referenciado no critério de complementaridade de A;
@@ -472,9 +472,14 @@ pred inv27 {
 	)
 }
 
-/*Uma entidade não se sucede a si própria */
+/* Uma entidade não se sucede a si própria */
 pred inv28{
 	all e:Entidade | e not in e.sucede
+}
+
+/* Uma legislação não se altera a si própria */
+pred inv29{
+	all l:Legislacao | l not in l.alteraLeg
 }
 
 run {
@@ -506,4 +511,5 @@ run {
 	 inv26
 	 inv27
 	 inv28
+	 inv29
 }
