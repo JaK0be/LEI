@@ -76,8 +76,8 @@ sig ClasseSerie extends Classe {
 	eFilhaDeN2 : lone ClasseN2,
 	eFilhaDeN3 : lone ClasseN3,
 	ePaiDeSubSerie : set ClasseSubSerie,
-	produzidaPorEnt : one Entidade,
-	produzidaPorTipEnt : one TipologiaDeEntidade,
+	produzidaPorEnt : lone Entidade,
+	produzidaPorTipEnt : lone TipologiaDeEntidade,
 	reguladaPor : set Legislacao,
 	temPCA : lone PCA,
 	eSuplementoDe : set ClasseSerie,
@@ -186,7 +186,7 @@ fact {
     UI <: produzidaPorTipEnt = ~(TipologiaDeEntidade <: produzUI)
     reguladaPor = ~regulaSerie
     eSuplementoDe = ~eSuplementoPara
-    eComplementar = ~eComplementar -- relação simétrica
+    eComplementar = ~eComplementar 
     eSintetizadaPorSerie = ~eSinteseDeSerie
     eSintetizadaPorSubSerie  = ~eSinteseDeSubSerie
     temSucessor = ~temAntecessor
@@ -409,6 +409,7 @@ pred inv21 {
 /* Uma classe série só pode ser produzida por uma entidade ou por uma tipologia */
 pred inv22 {
 	all c:ClasseSerie{
+		some c.produzidaPorEnt + c.produzidaPorTipEnt
 		some c.produzidaPorEnt implies no c.produzidaPorTipEnt
 		some c.produzidaPorTipEnt implies no c.produzidaPorEnt
 	} 
@@ -417,6 +418,7 @@ pred inv22 {
 /* Uma UI só pode ser produzido por uma entidade ou por uma tipologia */
 pred inv23 {
 	all ui:UI{
+		some ui.produzidaPorEnt + ui.produzidaPorTipEnt
 		some ui.produzidaPorEnt implies no ui.produzidaPorTipEnt
 		some ui.produzidaPorTipEnt implies no ui.produzidaPorEnt
 	} 
