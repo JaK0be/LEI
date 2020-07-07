@@ -1475,6 +1475,9 @@
         <ObjectProperty IRI="#eCruzado"/>
     </SymmetricObjectProperty>
     <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#alteraLeg"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
         <ObjectProperty IRI="#sucede"/>
     </IrreflexiveObjectProperty>
     <ObjectPropertyDomain>
